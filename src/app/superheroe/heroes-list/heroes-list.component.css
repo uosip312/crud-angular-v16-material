@@ -1,0 +1,26 @@
+table {
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ccc;
+}
+
+th {
+    text-align: center;
+}
+
+.mat-icon-button {
+    margin: 0 5px;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.mat-cell {
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+}
