@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Heroe } from 'src/app/core/interface/heroe';
 import { SuperheroesService } from 'src/app/core/service/superheroes.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteHeroeDialogComponent } from '../delete-heroe-dialog/delete-heroe-dialog.component';
 
 @Component({
   selector: 'app-heroes-list',
@@ -20,7 +22,8 @@ export class HeroesListComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private superHeroesSvc: SuperheroesService
+    private superHeroesSvc: SuperheroesService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -43,5 +46,16 @@ export class HeroesListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  
+  eliminarHeroe(hero: Heroe) {
+    this.dialog.open(DeleteHeroeDialogComponent, {
+      data: hero
+    }).afterClosed().subscribe((confirmado: Boolean) => {
+      if(confirmado) {
+        this.superHeroesSvc.deleteSuperHeroe(hero.id);
+        this.getHeroes();
+      }
+    });
   }
 }
