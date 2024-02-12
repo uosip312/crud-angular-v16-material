@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Heroe } from '../interface/heroe';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,9 @@ import { Heroe } from '../interface/heroe';
 export class SuperheroesService {
 
   private superHeroes: Heroe[] = [
-    { id: 1, name: 'Superman', description: 'El Hombre de Acero' },
-    { id: 2, name: 'Batman', description: 'El Caballero de la Noche' },
-    { id: 3, name: 'Spiderman', description: 'El Hombre Araña' },
+    { id: '6f7145f6-6021-4e17-a60a-5cfc8a7be1ab', name: 'Superman', description: 'El Hombre de Acero' },
+    { id: '55c4fc3c-ab30-47ae-892d-1ab059e9f1ac', name: 'Batman', description: 'El Caballero de la Noche' },
+    { id: '3', name: 'Spiderman', description: 'El Hombre Araña' },
   ];
 
   constructor() { }
@@ -18,7 +19,7 @@ export class SuperheroesService {
     return this.superHeroes;
   }
 
-  getSuperHeroeById(id: number): Heroe | undefined {
+  getSuperHeroeById(id: string): Heroe | undefined {
     return this.superHeroes.find(heroe => heroe.id === id);
   }
 
@@ -27,6 +28,7 @@ export class SuperheroesService {
   }
 
   addSuperHeroe(heroe: Heroe): void {
+    heroe.id = uuidv4();
     this.superHeroes.push(heroe);
   }
 
@@ -37,7 +39,7 @@ export class SuperheroesService {
     }
   }
 
-  deleteSuperHeroe(id: number): void {
+  deleteSuperHeroe(id: string): void {
     const index = this.superHeroes.findIndex( h => h.id === id);
     if( index !== -1 ) {
       this.superHeroes.splice(index, 1);
