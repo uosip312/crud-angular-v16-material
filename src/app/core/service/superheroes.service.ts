@@ -10,7 +10,7 @@ export class SuperheroesService {
   private superHeroes: Heroe[] = [
     { id: '6f7145f6-6021-4e17-a60a-5cfc8a7be1ab', name: 'Superman', description: 'El Hombre de Acero' },
     { id: '55c4fc3c-ab30-47ae-892d-1ab059e9f1ac', name: 'Batman', description: 'El Caballero de la Noche' },
-    { id: '3', name: 'Spiderman', description: 'El Hombre Araña' },
+    { id: 'bc7e5e8f-769c-4b28-83bf-c6439a2e3a5c', name: 'Spiderman', description: 'El Hombre Araña' },
   ];
 
   constructor() { }
