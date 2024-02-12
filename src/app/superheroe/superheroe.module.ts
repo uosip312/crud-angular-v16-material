@@ -8,6 +8,7 @@ import { AngularMaterialModule } from '../ngMaterial/angular-material.module';
 import { HeroeFormComponent } from './heroe-form/heroe-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteHeroeDialogComponent } from './delete-heroe-dialog/delete-heroe-dialog.component';
+import { UpperCaseDirective } from '../core/directives/upper-case.directive';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DeleteHeroeDialogComponent } from './delete-heroe-dialog/delete-heroe-d
     SuperheroeComponent,
     HeroesListComponent,
     HeroeFormComponent,
-    DeleteHeroeDialogComponent
+    DeleteHeroeDialogComponent,
+    UpperCaseDirective,
   ],
   imports: [
     CommonModule,

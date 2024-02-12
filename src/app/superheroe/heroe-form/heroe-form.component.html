@@ -6,7 +6,7 @@
             <form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
                 <mat-form-field class="form-field" appearance="outline">
                     <mat-label for="name">Nombre</mat-label>
-                    <input matInput id="name" formControlName="name">
+                    <input matInput id="name" formControlName="name" upperCase />
                     <mat-error
                         *ngIf="formValues['name'].invalid && (formValues['name'].dirty || formValues['name'].touched)">
                         <span *ngIf="formValues['name'].errors?.['required']">Requerido</span>
