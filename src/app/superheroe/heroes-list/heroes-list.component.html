@@ -11,7 +11,7 @@
             </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile colspan="1" >
-            <a mat-raised-button color="primary" routerLink="/superheroes/agregar" aria-label="Agregar">
+            <a mat-raised-button color="primary" (click)="formMode('Agregar')" routerLink="/superheroes/agregar" aria-label="Agregar">
                 <mat-icon>add</mat-icon> Agregar
             </a>
         </mat-grid-tile>
@@ -31,7 +31,7 @@
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef> Acciones </th>
                     <td mat-cell *matCellDef="let heroe"> 
-                        <button mat-icon-button color="accent" aria-label="Editar" [routerLink]="['/superheroes/editar', heroe.id]" >
+                        <button mat-icon-button color="accent" aria-label="Editar" (click)="formMode('Editar')" [routerLink]="['/superheroes/editar', heroe.id]" >
                             <mat-icon>edit</mat-icon>
                         </button>
                         <button mat-icon-button color="warn" aria-label="Eliminar" (click)="eliminarHeroe(heroe)">

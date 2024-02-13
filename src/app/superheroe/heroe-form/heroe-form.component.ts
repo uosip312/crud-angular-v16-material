@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Heroe } from 'src/app/core/interface/heroe';
 import { SuperheroesService } from 'src/app/core/service/superheroes.service';
 
@@ -13,7 +14,7 @@ export class HeroeFormComponent implements OnInit {
 
   heroForm!: FormGroup;
   heroId: string = '';
-
+  formMode: string = '';
   constructor(
     private superHeroeSvc: SuperheroesService,
     private fb: FormBuilder,
@@ -27,7 +28,10 @@ export class HeroeFormComponent implements OnInit {
     this.heroId = this.route.snapshot.params['id'];
     if(this.heroId) {
       this.patchForm(this.heroId);
+      this.heroForm.controls['id'].addValidators([Validators.required]);
+      this.heroForm.controls['id'].updateValueAndValidity();
     }
+    this.superHeroeSvc.getFormMode().subscribe( mode => this.formMode = mode);
   }
 
   buildForm(): void {
@@ -49,9 +53,7 @@ export class HeroeFormComponent implements OnInit {
 
   onSubmit(): void {
     if(this.heroForm.valid) {
-      console.log(this.heroForm.value);
       const hero = this.heroForm.value as Heroe;
-
       if(this.heroId) {
         this.superHeroeSvc.updateSuperHeroe(hero)
       } else {

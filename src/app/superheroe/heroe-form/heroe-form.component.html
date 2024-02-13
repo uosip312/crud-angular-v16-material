@@ -1,5 +1,5 @@
 <mat-card class="container">
-    <h2>Formulario Superhéroe</h2>
+    <h2>{{formMode}} Superhéroe</h2>
     <mat-divider></mat-divider>
     <mat-card-content>
         <div class="form-container">
@@ -25,7 +25,7 @@
                         <mat-icon>close</mat-icon> Cancelar
                     </button>
                     <button mat-raised-button color="primary" type="submit" [disabled]="heroForm.invalid">
-                        <mat-icon>save</mat-icon> Guardar
+                        <mat-icon>save</mat-icon> {{formMode == 'Agregar' ? 'Guardar' : 'Actualizar'}}
                     </button>
                 </div>
             </form>

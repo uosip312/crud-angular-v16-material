@@ -58,4 +58,8 @@ export class HeroesListComponent implements OnInit {
       }
     });
   }
+
+  formMode(mode: string) {
+    this.superHeroesSvc.setFormMode(mode);
+  }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Heroe } from '../interface/heroe';
 import { v4 as uuidv4 } from 'uuid';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ export class SuperheroesService {
     { id: '55c4fc3c-ab30-47ae-892d-1ab059e9f1ac', name: 'Batman', description: 'El Caballero de la Noche' },
     { id: 'bc7e5e8f-769c-4b28-83bf-c6439a2e3a5c', name: 'Spiderman', description: 'El Hombre Araña' },
   ];
+
+  private formMode$ = new BehaviorSubject<string>('');
 
   constructor() { }
 
@@ -44,6 +47,14 @@ export class SuperheroesService {
     if( index !== -1 ) {
       this.superHeroes.splice(index, 1);
     }
+  }
+
+  getFormMode(): Observable<string> {
+    return this.formMode$.asObservable();
+  }
+
+  setFormMode(mode: string): void {
+    this.formMode$.next(mode);
   }
  
 }
